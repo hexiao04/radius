@@ -129,6 +129,12 @@ func (s *PacketServer) Serve(conn net.PacketConn) error {
 			continue
 		}
 
+		// BGW HEALTH CHECK
+		if string(buff[:4]) == "Ping" {
+			conn.WriteTo([]byte("Pong"), remoteAddr)
+			continue
+		}
+
 		s.activeAdd()
 		go func(buff []byte, remoteAddr net.Addr) {
 			defer s.activeDone()
