@@ -6,7 +6,7 @@ import (
 	"crypto/rand"
 	"strconv"
 
-	"layeh.com/radius"
+	"github.com/hexiao04/radius"
 )
 
 const (

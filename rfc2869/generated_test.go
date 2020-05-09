@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"layeh.com/radius"
+	"github.com/hexiao04/radius"
 )
 
 func TestEAPMessage(t *testing.T) {

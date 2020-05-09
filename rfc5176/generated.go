@@ -2,10 +2,6 @@
 
 package rfc5176
 
-import (
-	. "layeh.com/radius/rfc3576"
-)
-
 func init() {
 	ErrorCause_Strings[ErrorCause_Value_InvalidAttributeValue] = "Invalid-Attribute-Value"
 	ErrorCause_Strings[ErrorCause_Value_MultipleSessionSelectionUnsupported] = "Multiple-Session-Selection-Unsupported"

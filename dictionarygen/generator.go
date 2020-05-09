@@ -8,7 +8,7 @@ import (
 	"net"
 	"strconv"
 
-	"layeh.com/radius/dictionary"
+	"github.com/hexiao04/radius/dictionary"
 )
 
 type externalAttribute struct {

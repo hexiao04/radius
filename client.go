@@ -14,6 +14,12 @@ type Client struct {
 	// Dialer to use when making the outgoing connections.
 	Dialer net.Dialer
 
+	// read timeout
+	ReadTimeout time.Duration
+
+	// write timeout
+	WriteTimeout time.Duration
+
 	// Interval on which to resend packet (zero or negative value means no
 	// retry).
 	Retry time.Duration
@@ -58,6 +64,7 @@ func (c *Client) Exchange(ctx context.Context, packet *Packet, addr string) (*Pa
 		connNet = "udp"
 	}
 
+	const defaultTimeout = 5 * time.Second
 	conn, err := c.Dialer.DialContext(ctx, connNet, addr)
 	if err != nil {
 		select {
@@ -69,6 +76,11 @@ func (c *Client) Exchange(ctx context.Context, packet *Packet, addr string) (*Pa
 	}
 	defer conn.Close()
 
+	var writeTimeout = defaultTimeout
+	if c.WriteTimeout != 0 {
+		c.WriteTimeout = writeTimeout
+	}
+	conn.SetWriteDeadline(time.Now().Add(writeTimeout))
 	conn.Write(wire)
 
 	var cancel context.CancelFunc
@@ -93,6 +105,12 @@ func (c *Client) Exchange(ctx context.Context, packet *Packet, addr string) (*Pa
 			}
 		}
 	}()
+
+	var readTimeout = defaultTimeout
+	if c.ReadTimeout != 0 {
+		c.ReadTimeout = readTimeout
+	}
+	conn.SetReadDeadline(time.Now().Add(readTimeout))
 
 	var packetErrorCount int
 

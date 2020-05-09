@@ -5,9 +5,7 @@ package rfc3576
 import (
 	"strconv"
 
-	"layeh.com/radius"
-
-	. "layeh.com/radius/rfc2865"
+	"github.com/hexiao04/radius"
 )
 
 const (

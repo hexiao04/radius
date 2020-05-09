@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
-	"layeh.com/radius"
-	"layeh.com/radius/rfc2865"
+	"github.com/hexiao04/radius"
+	"github.com/hexiao04/radius/rfc2865"
 )
 
 var (

@@ -6,7 +6,7 @@ import (
 	"net"
 	"strconv"
 
-	"layeh.com/radius"
+	"github.com/hexiao04/radius"
 )
 
 const (

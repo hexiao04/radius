@@ -7,8 +7,8 @@ import (
 	"os"
 	"os/exec"
 
-	"layeh.com/radius"
-	. "layeh.com/radius/rfc2865"
+	"github.com/hexiao04/radius"
+	. "github.com/hexiao04/radius/rfc2865"
 )
 
 var secret = flag.String("secret", "", "shared RADIUS secret between clients and server")

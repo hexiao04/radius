@@ -5,7 +5,7 @@ package rfc3162
 import (
 	"net"
 
-	"layeh.com/radius"
+	"github.com/hexiao04/radius"
 )
 
 const (
