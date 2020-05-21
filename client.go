@@ -78,7 +78,7 @@ func (c *Client) Exchange(ctx context.Context, packet *Packet, addr string) (*Pa
 
 	var writeTimeout = defaultTimeout
 	if c.WriteTimeout != 0 {
-		c.WriteTimeout = writeTimeout
+		writeTimeout = c.WriteTimeout
 	}
 	conn.SetWriteDeadline(time.Now().Add(writeTimeout))
 	conn.Write(wire)
@@ -108,7 +108,7 @@ func (c *Client) Exchange(ctx context.Context, packet *Packet, addr string) (*Pa
 
 	var readTimeout = defaultTimeout
 	if c.ReadTimeout != 0 {
-		c.ReadTimeout = readTimeout
+		readTimeout = c.ReadTimeout
 	}
 	conn.SetReadDeadline(time.Now().Add(readTimeout))
 
